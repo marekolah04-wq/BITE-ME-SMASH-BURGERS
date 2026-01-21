@@ -4,9 +4,10 @@
   const heroLogo = document.getElementById("heroLogo");
   const navLogo = document.getElementById("navLogo");
 
-  if (!nav || !hero || !heroLogo || !navLogo) return;
+  if (!nav || !hero) return;
 
   const prefersReducedMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  const isMobile = () => window.matchMedia("(max-width: 820px)").matches;
 
   // Smooth scroll offset nav
   const navOffset = () => nav.getBoundingClientRect().height + 10;
@@ -24,16 +25,32 @@
     });
   });
 
+  // --- Mobile: žádný morph, žádný logo v navu ---
+  // Jen resetneme případné desktop stavy a končíme.
+  const resetToMobile = () => {
+    nav.classList.remove("is-logo");
+    if (heroLogo) heroLogo.style.opacity = "1";
+    if (navLogo) navLogo.style.opacity = "";
+  };
+
+  if (isMobile()) {
+    resetToMobile();
+    return;
+  }
+
+  // Pokud tu nejsou loga, nemá smysl dělat morph
+  if (!heroLogo || !navLogo) return;
+
   // Stav
   let inNav = false;
   let busy = false;
 
   // Kdy se přepne (cca když hero mizí)
-const getTriggerY = () => {
-  const r = hero.getBoundingClientRect();
-  const heroTop = window.scrollY + r.top;
-  return heroTop + 140;
-};
+  const getTriggerY = () => {
+    const r = hero.getBoundingClientRect();
+    const heroTop = window.scrollY + r.top;
+    return heroTop + 140;
+  };
   let triggerY = getTriggerY();
 
   const cloneFly = (fromEl, toEl, done) => {
@@ -81,10 +98,8 @@ const getTriggerY = () => {
     if (busy || inNav) return;
     busy = true;
 
-    // Připrav místo pro logo v nav, menu se rozestoupí
     nav.classList.add("is-logo");
 
-    // Změříme až po přepnutí layoutu, ať letí na správné místo
     requestAnimationFrame(() => {
       heroLogo.style.opacity = "1";
       navLogo.style.opacity = "0";
@@ -102,7 +117,6 @@ const getTriggerY = () => {
     if (busy || !inNav) return;
     busy = true;
 
-    // Necháme logo v nav vidět během letu
     navLogo.style.opacity = "1";
     heroLogo.style.opacity = "0";
 
@@ -118,6 +132,14 @@ const getTriggerY = () => {
   };
 
   const onScroll = () => {
+    // kdyby někdo resize-nul do mobile, morph se už nespustí
+    if (isMobile()) {
+      resetToMobile();
+      inNav = false;
+      busy = false;
+      return;
+    }
+
     if (window.scrollY > triggerY) toNav();
     else toHero();
   };
@@ -126,7 +148,14 @@ const getTriggerY = () => {
   window.addEventListener("resize", () => {
     triggerY = getTriggerY();
 
+    // když přejdeš do mobile breakpointu, vypni morph a resetni
+    if (isMobile()) {
+      resetToMobile();
+      inNav = false;
+      busy = false;
+    }
   });
 
   onScroll();
 })();
+
