@@ -1,0 +1,118 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body{
+  font-family: system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
+  background: var(--bg);
+  color: var(--text);
+}
+
+img{ background: transparent; }
+a{ color: inherit; }
+
+
+html {
+  scroll-behavior: smooth;
+}
+
+body:not(.is-loaded) .nav,
+body:not(.is-loaded) .hero__content{
+  opacity: 0;
+  transform: translateY(-10px);
+}
+body.is-loaded .nav,
+body.is-loaded .hero__content{
+  opacity: 1;
+  transform: translateY(0);
+  transition: opacity 500ms ease, transform 500ms ease;
+}
+
+:root{
+  --bg: #0b0b0f;
+  --text: #f4f4f6;
+  --muted: rgba(244,244,246,0.78);
+  --accent: #f6c400;
+
+  --navH: 72px;
+  --radius: 18px;
+  --shadow: 0 18px 60px rgba(0,0,0,0.45);
+  --navLogoSize: 58px;
+}
+
+body.is-loaded .hero__logo{
+  animation: logoPop 720ms cubic-bezier(.2,.9,.2,1) both;
+}
+
+@keyframes logoPop{
+  0% { transform: translateY(8px) scale(0.96);}
+  100% { transform: translateY(0) scale(1);}
+}
+
+/* SECTION LAYOUT */
+.section{
+  position: relative;
+  padding: 96px 0;
+}
+@media (max-width: 520px){
+  .section{
+    padding: 78px 0;
+  }
+}
+
+.section__inner{
+  width: min(1100px, calc(100% - 28px));
+  margin: 0 auto;
+}
+
+.panel{
+  background: rgba(12, 12, 16, 0.78);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: var(--radius);
+  box-shadow: var(--shadow);
+  padding: 26px;
+}
+
+.section__head{
+  margin-bottom: 18px;
+}
+
+.section__title{
+  font-size: 30px;
+  margin-bottom: 8px;
+}
+
+.section__lead{
+  color: var(--muted);
+  line-height: 1.6;
+  max-width: 68ch;
+}
+
+
+
+/* reveal animation */
+.reveal{
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 500ms ease, transform 500ms ease;
+  will-change: opacity, transform;
+}
+.reveal.is-visible{
+  opacity: 1;
+  transform: translateY(0);
+}
+
+/* subtle card surface */
+.surface{
+  background: rgba(12, 12, 16, 0.92);
+  border: 1px solid rgba(255,255,255,0.08);
+  border-radius: 16px;
+}
+
+/* mini grid list */
+.kv{
+  display: grid;
+  gap: 10px;
+}

@@ -1,0 +1,494 @@
+<!DOCTYPE html>
+<html lang="cs">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <meta property="og:title" content="BITE ME, Smash Burgers">
+    <meta property="og:description" content="Streetfood stánek, smash burgery. Přijď k okýnku.">
+    <meta property="og:image" content="https://bite-me.cz/assets/img/og.jpg">
+    <meta property="og:url" content="https://bite-me.cz/">
+
+    <link rel="icon" type="image/png" href="/assets/icons/logo.png">
+    <link rel="apple-touch-icon" href="/assets/icons/logo.png">
+    <meta name="theme-color" content="#0b0b0f">
+
+
+    <link rel="canonical" href="https://bite-me.cz/">
+
+
+    <title>BITE ME | SMASH BURGERS</title>
+
+    <link rel="stylesheet" href="css/lightbox.css">
+    <link rel="stylesheet" href="css/navbar.css">
+    <link rel="stylesheet" href="css/hero.css">
+    <link rel="stylesheet" href="css/menu.css">
+    <link rel="stylesheet" href="css/visit.css">
+    <link rel="stylesheet" href="css/faq.css">
+    <link rel="stylesheet" href="css/footer.css">
+    <link rel="stylesheet" href="css/main.css">
+
+</head>
+
+<body>
+
+    <header class="site-header">
+        <nav class="nav" id="nav">
+            <div class="nav__inner">
+                <ul class="nav__group nav__group--left">
+                    <li><a class="nav__link" href="#menu">Menu</a></li>
+                    <li><a class="nav__link" href="#visit">Navštívit</a></li>
+                </ul>
+
+                <a class="nav__logo" id="navLogo" href="#top" aria-label="BITE ME domů">
+                    <img class="logoImg logoImg--small" src="assets/icons/logo.png" alt="BITE ME Smash Burgers">
+                </a>
+
+
+                <ul class="nav__group nav__group--right">
+                    <li><a class="nav__link" href="#faq">FAQ</a></li>
+
+                    <li class="nav__lang">
+                      <button class="nav__langBtn" type="button" aria-haspopup="listbox" aria-expanded="false" id="langBtn">
+                        <span class="nav__flagWrap" aria-hidden="true">
+                          <img class="nav__flagImg" id="langFlag" src="assets/icons/cz.svg" alt="">
+                        </span>
+
+                        <span class="nav__langCode" id="langLabel">CZ</span>
+                        <span class="nav__chev" aria-hidden="true">▾</span>
+                      </button>
+
+                      <div class="nav__langMenu" id="langMenu" role="listbox" aria-label="Jazyk" tabindex="-1">
+                        <button class="nav__langItem" type="button" role="option" data-lang="cs" aria-selected="true">
+                          <span class="nav__flagWrap" aria-hidden="true">
+                            <img class="nav__flagImg" src="assets/icons/cz.svg" alt="">
+                          </span>
+                          CZ
+                        </button>
+
+                        <button class="nav__langItem" type="button" role="option" data-lang="en" aria-selected="false">
+                          <span class="nav__flagWrap" aria-hidden="true">
+                            <img class="nav__flagImg" src="assets/icons/gb.svg" alt="">
+                          </span>
+                          EN
+                        </button>
+
+                        <button class="nav__langItem" type="button" role="option" data-lang="de" aria-selected="false">
+                          <span class="nav__flagWrap" aria-hidden="true">
+                            <img class="nav__flagImg" src="assets/icons/de.svg" alt="">
+                          </span>
+                          DE
+                        </button>
+                      </div>
+                    </li>
+
+
+
+
+                </ul>
+            </div>
+        </nav>
+    </header>
+
+    <main id="top">
+        <section class="hero" id="hero" aria-label="Úvod">
+            <div class="hero__bg" aria-hidden="true"></div>
+            <div class="hero__overlay" aria-hidden="true"></div>
+
+            <div class="hero__content">
+                <div class="hero__logo" id="heroLogo" aria-label="Logo BITE ME">
+                    <img class="logoImg logoImg--big" src="assets/icons/logo.png" alt="BITE ME Smash Burgers">
+                </div>
+
+
+                <h1 class="hero__title">SMASH BURGERS, street vibe</h1>
+                <p class="hero__text">Bez omáčky, jen pořádnej smash. Přijď k okýnku a hotovo.</p>
+
+                <div class="hero__cta">
+                    <a class="btn btn--primary" href="https://maps.google.com" target="_blank"
+                        rel="noopener">Navigovat</a>
+                    <a class="btn" href="tel:+420777888999">Zavolat</a>
+                    <a class="btn" href="https://instagram.com" target="_blank" rel="noopener">Instagram</a>
+                </div>
+            </div>
+        </section>
+    </main>
+
+
+
+
+<section class="section" id="menu" aria-label="Menu">
+  <div class="section__inner">
+    <div class="panel reveal">
+      <header class="section__head">
+        <h2 class="section__title">Menu</h2>
+        <p class="section__lead">Naše nabídka smash burgerů a příloh.</p>
+      </header>
+
+      <div class="menu-grid">
+        <article
+          class="menu-card"
+          data-lightbox
+          data-full="assets/img/menu/classic-smash.jpg"
+          data-title="Classic Smash"
+          data-price="189 Kč"
+          data-desc="150g kvalitního masa, cheddar, majonéza s uzenou paprikou, karamelizovaná cibulka, opečená slanina, okurka."
+          role="button"
+          tabindex="0"
+        >
+          <div class="menu-card__media">
+            <img class="menu-card__img" src="assets/img/menu/classic-smash.jpg" alt="Classic Smash burger">
+          </div>
+          <div class="menu-card__body">
+            <div class="menu-card__top">
+              <h3 class="menu-card__title">Classic Smash</h3>
+              <span class="menu-card__price">189 Kč</span>
+            </div>
+            <p class="menu-card__text">
+              150g kvalitního masa, cheddar, majonéza s uzenou paprikou, karamelizovaná cibulka, opečená slanina, okurka.
+            </p>
+          </div>
+        </article>
+
+        <article
+          class="menu-card"
+          data-lightbox
+          data-full="assets/img/menu/spicy-smash.jpg"
+          data-title="Spicy Smash 🌶️"
+          data-price="189 Kč"
+          data-desc="150g kvalitního masa, cheddar, chipotle majonéza, karamelizovaná cibulka, opečené chorizo, nakládané jalapeños."
+          role="button"
+          tabindex="0"
+        >
+          <div class="menu-card__media">
+            <img class="menu-card__img" src="assets/img/menu/spicy-smash.jpg" alt="Spicy Smash burger">
+          </div>
+          <div class="menu-card__body">
+            <div class="menu-card__top">
+              <h3 class="menu-card__title">Spicy Smash 🌶️</h3>
+              <span class="menu-card__price">189 Kč</span>
+            </div>
+            <p class="menu-card__text">
+              150g kvalitního masa, cheddar, chipotle majonéza, karamelizovaná cibulka, opečené chorizo, nakládané jalapeños.
+            </p>
+          </div>
+        </article>
+
+        <article
+          class="menu-card"
+          data-lightbox
+          data-full="assets/img/menu/smash-box.jpg"
+          data-title="Smash Box"
+          data-price="299 Kč"
+          data-desc="Smash Burger Classic/Spicy + 150g hranolky + nápoj."
+          role="button"
+          tabindex="0"
+        >
+          <div class="menu-card__media">
+            <img class="menu-card__img" src="assets/img/menu/smash-box.jpg" alt="Smash Box">
+            <span class="menu-badge menu-badge--new">Oblíbené</span>
+          </div>
+          <div class="menu-card__body">
+            <div class="menu-card__top">
+              <h3 class="menu-card__title">Smash Box</h3>
+              <span class="menu-card__price">299 Kč</span>
+            </div>
+            <p class="menu-card__text">Smash Burger Classic/Spicy + 150g hranolky + nápoj</p>
+          </div>
+        </article>
+
+
+
+
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+<section class="section" id="visit" aria-label="Navštívit">
+  <div class="section__inner">
+    <div class="panel reveal">
+      <header class="section__head">
+        <h2 class="section__title">Navštívit</h2>
+        <p class="section__lead">Cíl je jednoduchý, dostat tě k okýnku. Mapa a kontakt na jednom místě.</p>
+      </header>
+
+      <div class="visit">
+        <!-- LEFT: info -->
+        <div class="visit__card visit__card--info">
+          <div class="visit__block">
+            <h3 class="visit__h">Kde nás najdeš</h3>
+
+            <a class="visit__address"
+               href="https://maps.google.com/?q=BITE%20ME%20Smash%20Burgers"
+               target="_blank" rel="noopener">
+              <span class="visit__pin" aria-hidden="true">📍</span>
+              <span>
+                <strong>BITE ME Smash Burgers</strong><br>
+                Sem doplň reálnou adresu, město
+              </span>
+            </a>
+
+            <div class="visit__cta">
+              <a class="btn btn--primary" href="https://maps.google.com/?q=BITE%20ME%20Smash%20Burgers" target="_blank" rel="noopener">Navigovat</a>
+              <a class="btn" href="tel:+420777888999">Zavolat</a>
+            </div>
+          </div>
+
+          <div class="visit__block">
+            <h3 class="visit__h">Otevíračka</h3>
+
+            <div class="hours" data-hours>
+              <div class="hours__row" data-day="1"><span>Po</span><span>Zavřeno</span></div>
+              <div class="hours__row" data-day="2"><span>Út</span><span>11:00, 19:00</span></div>
+              <div class="hours__row" data-day="3"><span>St</span><span>11:00, 19:00</span></div>
+              <div class="hours__row" data-day="4"><span>Čt</span><span>11:00, 19:00</span></div>
+              <div class="hours__row" data-day="5"><span>Pá</span><span>12:00, 21:00</span></div>
+              <div class="hours__row" data-day="6"><span>So</span><span>12:00, 21:00</span></div>
+              <div class="hours__row" data-day="0"><span>Ne</span><span>11:00, 19:00</span></div>
+            </div>
+
+            <p class="visit__note">Tip, sleduj Instagram pro změny a speciály.</p>
+          </div>
+
+          <div class="visit__block visit__block--contact">
+            <h3 class="visit__h">Kontakt</h3>
+
+            <div class="contact-mini">
+              <a class="contact-mini__item" href="tel:+420777888999">
+                <span class="contact-mini__icon" aria-hidden="true">📞</span>
+                <span>
+                  <strong>Telefon</strong><br>
+                  +420 777 888 999
+                </span>
+              </a>
+
+              <a class="contact-mini__item" href="mailto:smash@bro.cz">
+                <span class="contact-mini__icon" aria-hidden="true">✉️</span>
+                <span>
+                  <strong>Email</strong><br>
+                  smash@bro.cz
+                </span>
+              </a>
+
+              <a class="contact-mini__item" href="https://instagram.com" target="_blank" rel="noopener">
+                <span class="contact-mini__icon" aria-hidden="true">📸</span>
+                <span>
+                  <strong>Instagram</strong><br>
+                  @bite.me
+                </span>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- RIGHT: map -->
+        <div class="visit__card visit__card--map">
+          <div class="map">
+            <!-- Vyměň src za reálný embed z Google Maps -->
+            <iframe
+              title="Mapa, BITE ME Smash Burgers"
+              src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3151.8354345093743!2d144.9537353159046!3d-37.81627974202137!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2z!5e0!3m2!1scs!2scz!4v0000000000000"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              allowfullscreen
+            ></iframe>
+
+            <a class="map__overlay"
+               href="https://maps.google.com/?q=BITE%20ME%20Smash%20Burgers"
+               target="_blank" rel="noopener"
+               aria-label="Otevřít v Mapách">
+              Otevřít v Mapách
+            </a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+
+
+
+<section class="section" id="faq" aria-label="FAQ">
+  <div class="section__inner">
+    <div class="panel reveal">
+      <header class="section__head">
+        <h2 class="section__title">FAQ</h2>
+        <p class="section__lead">Rychlý odpovědi, ať víš, co a jak, a hlavně ať dorazíš.</p>
+      </header>
+
+      <div class="faq" data-accordion>
+        <div class="faq__item">
+          <button class="faq__q" type="button" aria-expanded="false" aria-controls="faq-a1" id="faq-q1">
+            <span class="faq__qText">Máte alergeny?</span>
+            <span class="faq__icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq__a" id="faq-a1" role="region" aria-labelledby="faq-q1" hidden>
+            <div class="faq__aInner">
+              <p>
+                Seznam alergenů doplníme co nejdřív. Když spěcháš, zeptej se u okýnka, nebo napiš na Instagram
+                <a href="https://instagram.com/biteme" target="_blank" rel="noopener">@biteme</a>.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="faq__item">
+          <button class="faq__q" type="button" aria-expanded="false" aria-controls="faq-a2" id="faq-q2">
+            <span class="faq__qText">Dá se platit kartou?</span>
+            <span class="faq__icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq__a" id="faq-a2" role="region" aria-labelledby="faq-q2" hidden>
+            <div class="faq__aInner">
+              <p>
+                Jo, platba kartou je v pohodě. Hotovost taky může být, ale karta je jistota.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="faq__item">
+          <button class="faq__q" type="button" aria-expanded="false" aria-controls="faq-a3" id="faq-q3">
+            <span class="faq__qText">Jak dlouho trvá výdej?</span>
+            <span class="faq__icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq__a" id="faq-a3" role="region" aria-labelledby="faq-q3" hidden>
+            <div class="faq__aInner">
+              <p>
+                Většinou pár minut. Když je špička a fronta, tak podle počtu lidí. Snažíme se jet rychle, ale ne odfláknutě.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <div class="faq__item">
+          <button class="faq__q" type="button" aria-expanded="false" aria-controls="faq-a4" id="faq-q4">
+            <span class="faq__qText">Kde budou novinky a speciály?</span>
+            <span class="faq__icon" aria-hidden="true"></span>
+          </button>
+          <div class="faq__a" id="faq-a4" role="region" aria-labelledby="faq-q4" hidden>
+            <div class="faq__aInner">
+              <p>
+                Nejrychlejší je Instagram,
+                <a href="https://instagram.com/biteme" target="_blank" rel="noopener">@biteme</a>.
+                Tam budou limitky, změny a vše důležitý.
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+
+
+
+<footer class="footer" id="contact" aria-label="Footer">
+  <div class="footer__inner">
+    <div class="footer__grid">
+
+      <div class="footer__brand">
+        <a class="footer__logo" href="#top" aria-label="BITE ME domů">
+          <img src="assets/icons/logo.png" alt="BITE ME Smash Burgers">
+        </a>
+        <p class="footer__tagline">
+          Smash burgery, street vibe. Přijď k okýnku.
+        </p>
+
+        <div class="footer__cta">
+          <a class="btn btn--primary" href="https://maps.google.com/?q=BITE%20ME%20Smash%20Burgers" target="_blank" rel="noopener">Navigovat</a>
+          <a class="btn" href="tel:+420777888999">Zavolat</a>
+        </div>
+      </div>
+
+      <div class="footer__col">
+        <h3 class="footer__h">Kontakt</h3>
+        <ul class="footer__list">
+          <li><a class="footer__link" href="tel:+420777888999">+420 777 888 999</a></li>
+          <li><a class="footer__link" href="mailto:smash@bro.cz">smash@bro.cz</a></li>
+          <li><a class="footer__link" href="https://instagram.com/biteme" target="_blank" rel="noopener">@biteme</a></li>
+        </ul>
+      </div>
+
+      <div class="footer__col">
+        <h3 class="footer__h">Adresa</h3>
+        <ul class="footer__list">
+          <li>
+            <a class="footer__link" href="https://maps.google.com/?q=BITE%20ME%20Smash%20Burgers" target="_blank" rel="noopener">
+              Sem doplň reálnou adresu, město
+            </a>
+          </li>
+        </ul>
+
+        <h3 class="footer__h footer__h--space">Otevíračka</h3>
+        <p class="footer__small">Út–Čt 11:00–19:00, Pá–So 12:00–21:00, Ne 11:00–19:00</p>
+      </div>
+
+    </div>
+
+  <div class="footer__bottom">
+    <div class="footer__meta">
+      <p class="footer__small">© <span id="year"></span> BITE ME. Všechna práva vyhrazena.</p>
+
+      <a class="footer__madeby" href="https://marek-codes.cz" target="_blank" rel="noopener">
+        Vytvořil Marek Oláh
+      </a>
+    </div>
+
+    <div class="footer__legal">
+      <a class="footer__link footer__link--muted" href="#" data-open-privacy>Privacy</a>
+      <a class="footer__link footer__link--muted" href="#" data-open-cookies>Cookies</a>
+
+      <a class="footer__creditBtn" href="https://marek-codes.cz" target="_blank" rel="noopener">
+        Web: Marek Oláh
+      </a>
+    </div>
+  </div>
+
+  </div>
+</footer>
+
+
+
+
+
+
+
+
+
+    <div class="lightbox" id="lightbox" aria-hidden="true">
+        <button class="lightbox__close" type="button" aria-label="Zavřít">×</button>
+
+        <div class="lightbox__content" role="dialog" aria-modal="true" aria-label="Detail položky">
+            <img class="lightbox__img" alt="">
+            <div class="lightbox__meta">
+                <div class="lightbox__top">
+                    <h3 class="lightbox__title" id="lightboxTitle"></h3>
+                    <span class="lightbox__price" id="lightboxPrice"></span>
+                </div>
+                <p class="lightbox__desc" id="lightboxDesc"></p>
+            </div>
+        </div>
+    </div>
+
+
+
+
+    <script src="js/main.js"></script>
+    <script src="js/navbar.js"></script>
+    <script src="js/language.js"></script>
+    <script src="js/faq.js"></script>
+
+
+
+</body>
+
+</html>

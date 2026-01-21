@@ -1,0 +1,212 @@
+.site-header{
+  position: relative;
+  z-index: 50;
+}
+
+.nav{
+  position: fixed;
+  top: 0; left: 0; right: 0;
+  height: var(--navH);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: rgba(0,0,0,0.78);
+  backdrop-filter: blur(10px);
+  border-bottom: 1px solid rgba(255,255,255,0.06);
+  z-index: 60;
+}
+
+.nav__inner{
+  width: min(1100px, calc(100% - 28px));
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0;
+}
+
+.nav__group{
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  gap: 18px;
+  flex: 1;
+}
+.nav__group--left{ justify-content: flex-end; }
+.nav__group--right{ justify-content: flex-start; }
+
+.nav__link{
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 12px;
+  border-radius: 999px;
+  text-decoration: none;
+  color: rgba(255,255,255,0.88);
+  font-weight: 750;
+  font-size: 14px;
+  letter-spacing: 0.02em;
+  transition: transform 220ms ease, background 220ms ease, color 220ms ease;
+  outline: none;
+}
+.nav__link:hover{
+  transform: translateY(-1px);
+  background: rgba(255,255,255,0.06);
+  color: #fff;
+}
+.nav__link:focus-visible{
+  box-shadow: 0 0 0 3px rgba(255,204,0,0.35);
+  background: rgba(255,255,255,0.08);
+}
+
+.nav__logo{
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+
+  width: 0;
+  height: var(--navLogoSize);
+  margin: 0;
+  overflow: hidden;
+
+  border-radius: 999px;
+  text-decoration: none;
+
+  opacity: 0;
+  transform: scale(0.88);
+  pointer-events: none;
+
+  background: transparent;
+  border: 0;
+  box-shadow: none;
+
+  transition:
+    width 320ms cubic-bezier(.2,.9,.2,1),
+    margin 320ms cubic-bezier(.2,.9,.2,1),
+    opacity 220ms ease,
+    transform 220ms ease;
+}
+
+
+.nav.is-logo .nav__logo{
+  width: var(--navLogoSize);
+  margin: 0 14px;
+  opacity: 1;
+  transform: scale(1);
+  pointer-events: auto;
+}
+
+
+/* LANGUAGE switcher */
+.nav__lang{
+  position: relative;
+  display: flex;
+  align-items: center;
+}
+
+.nav__langBtn{
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 12px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.06);
+  color: rgba(244,244,246,0.92);
+  cursor: pointer;
+  font-weight: 850;
+  letter-spacing: 0.02em;
+  transition: transform 180ms ease, background 180ms ease, border-color 180ms ease;
+}
+
+.nav__langBtn:hover{
+  transform: translateY(-1px);
+  background: rgba(255,255,255,0.10);
+  border-color: rgba(255,255,255,0.18);
+}
+
+.nav__langBtn:focus-visible{
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(246,196,0,0.35);
+}
+
+.nav__flag{
+  font-size: 14px;
+  line-height: 1;
+}
+
+.nav__flagWrap{
+  width: 20px;
+  height: 20px;
+  border-radius: 999px;
+  overflow: hidden;
+  border: 1px solid rgba(255,255,255,0.14);
+  box-shadow: 0 8px 20px rgba(0,0,0,0.25);
+  display: inline-block;
+  flex: 0 0 auto;
+  background: transparent;
+}
+
+.nav__flagImg{
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+  background: transparent;
+}
+
+
+.nav__chev{
+  opacity: 0.8;
+  transform: translateY(1px);
+  transition: transform 160ms ease, opacity 160ms ease;
+}
+
+.nav__lang.is-open .nav__chev{
+  transform: rotate(180deg);
+  opacity: 1;
+}
+
+.nav__langMenu{
+  position: absolute;
+  top: calc(100% + 10px);
+  right: 0;
+  min-width: 140px;
+  padding: 8px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.10);
+  background: rgba(0,0,0,0.86);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 18px 60px rgba(0,0,0,0.45);
+  display: grid;
+  gap: 6px;
+  z-index: 90;
+  transform: translateY(-6px) scale(0.98);
+  opacity: 0;
+  pointer-events: none;
+  transform-origin: top right;
+  transition: opacity 160ms ease, transform 160ms ease;
+}
+
+.nav__lang.is-open .nav__langMenu{
+  gap: 6px;
+  opacity: 1;
+  transform: translateY(0) scale(1);
+  pointer-events: auto;
+}
+
+.nav__langItem{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 10px;
+  border-radius: 12px;
+  border: 1px solid rgba(255,255,255,0.06);
+  background: rgba(255,255,255,0.04);
+  color: rgba(244,244,246,0.92);
+  cursor: pointer;
+  text-align: left;
+  font-weight: 800;
+  transition: background 160ms ease, border-color 160ms ease, transform 160ms ease;
+}
+

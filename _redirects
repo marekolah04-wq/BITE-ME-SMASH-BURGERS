@@ -1,0 +1,4 @@
+# Force https + non-www canonical host
+http://bite-me.cz/* https://bite-me.cz/:splat 301!
+http://www.bite-me.cz/* https://bite-me.cz/:splat 301!
+https://www.bite-me.cz/* https://bite-me.cz/:splat 301!

@@ -1,0 +1,110 @@
+.faq{
+  display: grid;
+  gap: 10px;
+}
+
+.faq__item{
+  border-radius: 16px;
+  border: 1px solid rgba(255,255,255,0.08);
+  background: rgba(12, 12, 16, 0.92);
+  overflow: hidden;
+}
+
+.faq__q{
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+
+  padding: 14px 14px;
+  background: transparent;
+  border: 0;
+  color: #fff;
+
+  cursor: pointer;
+  text-align: left;
+  font-weight: 850;
+  letter-spacing: 0.01em;
+}
+
+.faq__qText{
+  font-size: 16px;
+}
+
+/* + - icon */
+.faq__icon{
+  width: 18px;
+  height: 18px;
+  position: relative;
+  flex: 0 0 auto;
+  opacity: 0.9;
+}
+
+.faq__icon::before,
+.faq__icon::after{
+  content: "";
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  width: 18px;
+  height: 2px;
+  background: var(--accent);
+  transform: translate(-50%, -50%);
+  border-radius: 999px;
+}
+
+.faq__icon::after{
+  width: 2px;
+  height: 18px;
+  transition: opacity 220ms ease, transform 220ms ease;
+}
+
+/* + -> - */
+.faq__item.is-open .faq__icon::after{
+  opacity: 0;
+  transform: translate(-50%, -50%) scaleY(0.2);
+}
+
+.faq__q:focus-visible{
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(246,196,0,0.35);
+  border-radius: 14px;
+}
+
+/* Answer panel (smooth height animation handled by JS) */
+.faq__a{
+  padding: 0;
+  color: var(--muted);
+  line-height: 1.6;
+
+  height: 0;
+  overflow: hidden;
+  transition: height 260ms ease;
+}
+
+.faq__item.is-open .faq__a{
+  height: auto;
+}
+
+/* Padding moved here to avoid height+padding jank */
+.faq__aInner{
+  padding: 0 14px 14px;
+}
+
+.faq__a p{
+  margin: 0;
+}
+
+.faq__a a{
+  color: var(--accent);
+  text-decoration: none;
+  font-weight: 800;
+}
+.faq__a a:hover{
+  text-decoration: underline;
+}
+
+@media (max-width: 520px){
+  .faq__qText{ font-size: 15px; }
+}

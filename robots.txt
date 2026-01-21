@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://bite-me.cz/sitemap.xml
