@@ -20,9 +20,8 @@
 
 .footer__brand{
   border-radius: 16px;
-  border: 1px solid rgba(255,255,255,0.08);
-  background: rgba(0,0,0,0.22);
   padding: 16px;
+  color: rgba(244,244,246,0.9);
 }
 
 .footer__logo{
@@ -30,11 +29,12 @@
   width: 74px;
   height: 74px;
   border-radius: 18px;
-  border: 1px solid rgba(255,255,255,0.10);
-  background: rgba(255,255,255,0.05);
   overflow: hidden;
   text-decoration: none;
   box-shadow: 0 14px 44px rgba(0,0,0,0.35);
+}
+.footer__logo:hover{
+  transform: scale(1.05);
 }
 
 .footer__logo img{
@@ -52,12 +52,6 @@
   max-width: 40ch;
 }
 
-.footer__cta{
-  display: flex;
-  gap: 10px;
-  flex-wrap: wrap;
-  margin-top: 14px;
-}
 
 .footer__col{
   border-radius: 16px;
@@ -142,25 +136,7 @@
 }
 
 
-.footer__creditBtn{
-  display: inline-flex;
-  align-items: center;
-  justify-content: center;
-  padding: 10px 12px;
-  border-radius: 999px;
-  border: 1px solid rgba(255,255,255,0.12);
-  background: var(--bg);
-  color: rgba(244,244,246,0.9);
-  text-decoration: none;
-  font-weight: 850;
-  letter-spacing: 0.01em;
-  transition: transform 180ms ease, background 180ms ease, border-color 180ms ease;
-}
-.footer__creditBtn:hover{
-  transform: translateY(-1px);
-  background: rgba(255,255,255,0.10);
-  border-color: rgba(255,255,255,0.18);
-}
+
 
 
 
@@ -178,9 +154,6 @@
     gap: 14px;
   }
 
-  .footer__cta{
-    gap: 8px;
-  }
 
   .footer__bottom{
     flex-direction: column;
