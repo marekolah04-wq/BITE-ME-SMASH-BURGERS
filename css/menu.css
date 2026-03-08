@@ -90,7 +90,6 @@
   box-shadow: 0 0 0 3px rgba(255,204,0,0.35);
 }
 
-/* Variant pills in cards */
 .menu-variants{
   display: flex;
   flex-wrap: wrap;
@@ -129,7 +128,6 @@
   box-shadow: 0 0 0 3px rgba(246,196,0,0.35);
 }
 
-/* Lists under cards */
 .menu-listWrap{
   margin-top: 18px;
   display: grid;
@@ -167,6 +165,7 @@
 
 @media (max-width: 900px){
   .menu-listWrap{ grid-template-columns: 1fr; }
+  .menu-variantBtn{ padding: 8px 16px; font-size: 12px; }
 }
 
 @media (max-width: 900px){

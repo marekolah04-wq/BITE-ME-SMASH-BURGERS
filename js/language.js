@@ -84,7 +84,7 @@
         contact: "Kontakt",
         mapOpen: "Otevřít v Mapách",
         note: "Sleduj Instagram pro změny a speciály.",
-        addressPlaceholder: "Sem doplň reálnou adresu, město",
+        addressPlaceholder: "Česká Kubice, Horní Folmava",
       },
 
       labels: {
@@ -132,7 +132,7 @@
         hoursSummary: "Út–Čt 11:00–19:00, Pá–So 12:00–21:00, Ne 11:00–19:00",
         copySuffix: "BITE ME. Všechna práva vyhrazena.",
         madeby: "Vytvořil Marek Oláh",
-        addressPlaceholder: "Sem doplň reálnou adresu, město",
+        addressPlaceholder: "Česká Kubice, Horní Folmava",
       },
     },
 
@@ -200,7 +200,7 @@
         contact: "Contact",
         mapOpen: "Open in Maps",
         note: "Follow Instagram for changes and specials.",
-        addressPlaceholder: "Add the real address here, city",
+        addressPlaceholder: "Česká Kubice, Horní Folmava"
       },
 
       labels: {
@@ -248,7 +248,7 @@
         hoursSummary: "Tue–Thu 11:00–19:00, Fri–Sat 12:00–21:00, Sun 11:00–19:00",
         copySuffix: "BITE ME. All rights reserved.",
         madeby: "Built by Marek Oláh",
-        addressPlaceholder: "Add the real address here, city",
+        addressPlaceholder: "Česká Kubice, Horní Folmava"
       },
     },
 
@@ -316,7 +316,7 @@
         contact: "Kontakt",
         mapOpen: "In Maps öffnen",
         note: "Folge Instagram für Änderungen und Specials.",
-        addressPlaceholder: "Hier die echte Adresse eintragen, Stadt",
+        addressPlaceholder: "Česká Kubice, Horní Folmava"
       },
 
       labels: {
@@ -364,7 +364,7 @@
         hoursSummary: "Di–Do 11:00–19:00, Fr–Sa 12:00–21:00, So 11:00–19:00",
         copySuffix: "BITE ME. Alle Rechte vorbehalten.",
         madeby: "Erstellt von Marek Oláh",
-        addressPlaceholder: "Hier die echte Adresse eintragen, Stadt",
+        addressPlaceholder: "Česká Kubice, Horní Folmava",
       },
     },
   };
