@@ -26,7 +26,9 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // Reusable lightbox for anything with [data-lightbox]
+  // =========================
+  // Lightbox (open ONLY by clicking photo)
+  // =========================
   const lb = document.getElementById("lightbox");
   if (lb) {
     const lbImg = lb.querySelector(".lightbox__img");
@@ -37,11 +39,31 @@ document.addEventListener("DOMContentLoaded", () => {
 
     let lastFocus = null;
 
-    const openLightbox = (el) => {
-      const full = el.dataset.full || "";
-      const title = el.dataset.title || "";
-      const price = el.dataset.price || "";
-      const desc = el.dataset.desc || "";
+    const getLang = () => localStorage.getItem("lang") || "cs";
+    const getPriceForLang = (prices, lang) => {
+      if (!prices) return "";
+      if (lang === "cs") return prices.cs || "";
+      // EN + DE -> EUR
+      if (lang === "de") return prices.de || prices.en || "";
+      return prices.en || prices.de || "";
+    };
+
+    const openLightboxFromCard = (card) => {
+      const full = card.dataset.full || "";
+      const title = card.dataset.title || "";
+      const desc = card.dataset.desc || "";
+
+      // Cena: vezmi z aktuálně vybrané varianty v kartě
+      let price = "";
+      try {
+        const variants = JSON.parse(card.dataset.variants || "[]");
+        const selected = card.dataset.selected || card.dataset.default || "";
+        const lang = getLang();
+        const v = variants.find((x) => String(x.id) === String(selected)) || variants[0];
+        price = v ? getPriceForLang(v.prices, lang) : "";
+      } catch {
+        price = "";
+      }
 
       lastFocus = document.activeElement;
 
@@ -73,148 +95,38 @@ document.addEventListener("DOMContentLoaded", () => {
       lastFocus = null;
     };
 
+    // Klik: jen na fotku (data-open-lightbox), najdi parent card a otevři z něj
     document.addEventListener("click", (e) => {
-      const card = e.target.closest("[data-lightbox]");
+      const media = e.target.closest("[data-open-lightbox]");
+      if (!media) return;
+
+      const card = media.closest(".menu-card");
       if (!card) return;
-      if (e.target.closest("a")) return;
-      openLightbox(card);
+
+      openLightboxFromCard(card);
     });
 
+    // ESC zavírá
     document.addEventListener("keydown", (e) => {
-      if (lb.classList.contains("is-open")) {
-        if (e.key === "Escape") closeLightbox();
-        return;
-      }
-
-      if (e.key !== "Enter" && e.key !== " ") return;
-      const active = document.activeElement;
-      if (!active || !active.matches("[data-lightbox]")) return;
-
-      e.preventDefault();
-      openLightbox(active);
+      if (!lb.classList.contains("is-open")) return;
+      if (e.key === "Escape") closeLightbox();
     });
 
     lbClose.addEventListener("click", closeLightbox);
     lb.addEventListener("click", (e) => {
       if (e.target === lb) closeLightbox();
     });
+
+    // Expose helper, aby menu-variants.js mohl po změně varianty refreshnout cenu v lightboxu,
+    // pokud je lightbox otevřený na té samé kartě.
+    window.__openLightboxFromCard = openLightboxFromCard;
   }
 
-  // Highlight today opening hours (uvnitř DOMContentLoaded, ať je to jistota)
+  // Highlight today opening hours
   const hoursRoot = document.querySelector("[data-hours]");
   if (hoursRoot) {
     const today = new Date().getDay();
     const row = hoursRoot.querySelector(`[data-day="${today}"]`);
     if (row) row.classList.add("is-today");
   }
-
-  // =========================
-  // Cookies consent + GA4
-  // =========================
-
-  const GA_ID = "G-XXXXXXXXXX"; //GA4 Measurement ID
-  const CONSENT_KEY = "analytics_consent"; // "granted" | "denied"
-
-  // gtag stub (umožní nám queue i před načtením GA scriptu)
-  window.dataLayer = window.dataLayer || [];
-  function gtag(){ window.dataLayer.push(arguments); }
-
-  const hasConsent = () => localStorage.getItem(CONSENT_KEY);
-  const setConsent = (value) => localStorage.setItem(CONSENT_KEY, value);
-
-  const cookieBanner = document.getElementById("cookieBanner");
-
-  const hideBanner = () => {
-    if (!cookieBanner) return;
-    cookieBanner.hidden = true;
-  };
-
-  const showBanner = () => {
-    if (!cookieBanner) return;
-    cookieBanner.hidden = false;
-  };
-
-  const loadGA = () => {
-    if (!GA_ID || GA_ID === "G-XXXXXXXXXX") return;
-    if (window.__gaLoaded) return;
-    window.__gaLoaded = true;
-
-    const s = document.createElement("script");
-    s.async = true;
-    s.src = `https://www.googletagmanager.com/gtag/js?id=${encodeURIComponent(GA_ID)}`;
-    document.head.appendChild(s);
-
-    gtag("js", new Date());
-    gtag("config", GA_ID, { anonymize_ip: true });
-  };
-
-  // Simple tracking helper
-  const track = (eventName, params = {}) => {
-    if (hasConsent() !== "granted") return;
-    if (!GA_ID || GA_ID === "G-XXXXXXXXXX") return;
-    gtag("event", eventName, params);
-  };
-
-  // Expose for other scripts if you want later
-  window.track = track;
-
-  // Init banner state
-  const saved = hasConsent();
-
-  if (!saved) {
-    showBanner();
-  } else {
-    hideBanner();
-    if (saved === "granted") loadGA();
-  }
-
-  // Banner buttons
-  if (cookieBanner) {
-    cookieBanner.addEventListener("click", (e) => {
-      const btn = e.target.closest("[data-cookie]");
-      if (!btn) return;
-
-      const action = btn.dataset.cookie;
-
-      if (action === "accept") {
-        setConsent("granted");
-        hideBanner();
-        loadGA();
-      }
-
-      if (action === "reject") {
-        setConsent("denied");
-        hideBanner();
-      }
-    });
-  }
-
-  // =========================
-  // GA events for CTA clicks
-  // =========================
-  // Přidej data-ga="..." na prvky, které chceš trackovat
-  document.addEventListener("click", (e) => {
-    const el = e.target.closest("[data-ga]");
-    if (!el) return;
-
-    const name = el.dataset.ga;
-    if (!name) return;
-
-    track(name, {
-      section: el.dataset.gaSection || "",
-      label: el.dataset.gaLabel || "",
-      href: el.getAttribute("href") || ""
-    });
-  });
 });
-
-
-
-
-
-
-
-
-
-
-

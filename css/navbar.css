@@ -94,6 +94,9 @@
   transform: scale(1);
   pointer-events: auto;
 }
+.nav.is-logo .nav__logo:hover{
+  transform: translateY(-1px);
+}
 
 
 
