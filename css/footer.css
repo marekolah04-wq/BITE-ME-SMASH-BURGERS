@@ -134,6 +134,14 @@
 .footer__madeby:hover{
   color: #fff;
 }
+.footer__top{
+  text-decoration: none;
+  opacity: 0.72;
+  transition: color 160ms ease, opacity 160ms ease;
+}
+.footer__top:hover{
+  opacity: 1;
+}
 
 
 
