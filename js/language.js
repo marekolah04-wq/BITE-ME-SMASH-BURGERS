@@ -141,7 +141,6 @@
 
       hero: {
         title: "STREET SMASH BURGERS",
-        text: "Smash burgers that hit you right from the first bite.",
         nav: "Navigate",
         call: "Call",
         ig: "Instagram",
@@ -257,7 +256,6 @@
 
       hero: {
         title: "STREET SMASH BURGERS",
-        text: "Smash Burger, die dich gleich beim ersten Biss treffen.",
         nav: "Navigation",
         call: "Anrufen",
         ig: "Instagram",
