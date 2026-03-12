@@ -24,18 +24,46 @@
     }
   };
 
-  const setPrice = (card) => {
-    const priceEl = card.querySelector("[data-menu-price]");
-    if (!priceEl) return;
-
-    const lang = getLang();
+  // Najde vybranou variantu podle card.dataset.selected (fallback na default)
+  const getSelectedVariant = (card) => {
     const variants = parseVariants(card);
-    if (!variants.length) return;
+    if (!variants.length) return null;
 
     const selected = card.dataset.selected || card.dataset.default || variants[0].id;
-    const v = variants.find((x) => String(x.id) === String(selected)) || variants[0];
+    return variants.find((x) => String(x.id) === String(selected)) || variants[0];
+  };
 
-    priceEl.textContent = priceForLang(v.prices, lang);
+  // Aplikuje variantu: cena + obrazek v karte + zdroj pro lightbox
+  const applyVariant = (card) => {
+    const lang = getLang();
+    const v = getSelectedVariant(card);
+    if (!v) return;
+
+    // 1) cena v kartě
+    const priceEl = card.querySelector("[data-menu-price]");
+    if (priceEl) priceEl.textContent = priceForLang(v.prices, lang);
+
+    // 2) obrazek v kartě (pokud varianta obsahuje img/full)
+    const imgEl = card.querySelector(".menu-card__img");
+    if (imgEl && v.img) {
+      imgEl.src = v.img;
+    }
+
+    // 3) lightbox zdroj: dáváme to na článek i na trigger element
+    // (protože podle tvého main.js se může posílat do lightboxu element s data-open-lightbox)
+    const fullSrc = v.full || v.img;
+    if (fullSrc) {
+      card.dataset.full = fullSrc;
+
+      const trigger = card.querySelector("[data-open-lightbox]") || card;
+      trigger.dataset.full = fullSrc;
+
+      // bonus: ať lightbox vždycky bere správný title/desc/price, i když se kliká na trigger
+      // title + desc už řeší language.js na card.dataset.title / card.dataset.desc
+      if (card.dataset.title) trigger.dataset.title = card.dataset.title;
+      if (card.dataset.desc) trigger.dataset.desc = card.dataset.desc;
+      trigger.dataset.price = priceForLang(v.prices, lang);
+    }
   };
 
   const renderButtons = (card) => {
@@ -43,6 +71,7 @@
     if (!wrap) return;
 
     const variants = parseVariants(card);
+
     // Pokud je jen 1 varianta, tlačítka nedáváme
     if (variants.length <= 1) {
       wrap.innerHTML = "";
@@ -70,7 +99,7 @@
       })
       .join("");
 
-    // Klik na variant: přepne selected + cenu, a NIKDY neotevírá lightbox
+    // Klik na variant: přepne selected + cenu + img, a NIKDY neotevírá lightbox
     wrap.querySelectorAll(".menu-variantBtn").forEach((btn) => {
       btn.addEventListener("click", (e) => {
         e.preventDefault();
@@ -87,16 +116,12 @@
           b.setAttribute("aria-pressed", on ? "true" : "false");
         });
 
-        setPrice(card);
-
-        // Pokud je otevřený lightbox a user klikl na variantu, nic se nemá dít samo.
-        // Cena se aktualizuje až při dalším otevření lightboxu.
+        applyVariant(card);
       });
     });
   };
 
   const initCard = (card) => {
-    // default selected (pokud ještě není)
     const variants = parseVariants(card);
     if (!variants.length) return;
 
@@ -105,7 +130,7 @@
     }
 
     renderButtons(card);
-    setPrice(card);
+    applyVariant(card);
   };
 
   const initAll = () => {
@@ -115,13 +140,11 @@
   // 1) init na startu
   initAll();
 
-  // 2) při změně jazyka: refresh button labely + ceny
-  // language.js vždy uloží localStorage lang a zavolá applyTranslations.
-  // My jen sledujeme změny localStorage (přes custom event).
+  // 2) při změně jazyka: refresh button labely + ceny (+ img/price do lightbox datasetu)
   window.addEventListener("langchange", () => {
     document.querySelectorAll(".menu-card[data-variants]").forEach((card) => {
       renderButtons(card);
-      setPrice(card);
+      applyVariant(card);
     });
   });
 })();

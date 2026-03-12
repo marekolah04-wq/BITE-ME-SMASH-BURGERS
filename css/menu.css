@@ -20,7 +20,7 @@
 
 .menu-card__media{
   position: relative;
-  height: 170px;
+  height: clamp(180px, 22vw, 260px);
   overflow: hidden;
 }
 
@@ -29,6 +29,7 @@
   height: 100%;
   display: block;
   object-fit: cover;
+  object-position: center 60%;
   transform: scale(1);
   transition: transform 320ms ease;
 }
