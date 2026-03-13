@@ -13,11 +13,16 @@
 
 .lightbox__content{
   width: min(980px, 96vw);
+  max-height: calc(100svh - 36px); 
+  display: flex;
+  flex-direction: column;
+
   background: rgba(12, 12, 16, 0.92);
   border: 1px solid rgba(255,255,255,0.12);
   border-radius: var(--radius);
   box-shadow: var(--shadow);
   overflow: hidden;
+
   transform: translateY(10px);
   opacity: 0;
   transition: opacity 220ms ease, transform 220ms ease;
@@ -30,14 +35,18 @@
 
 .lightbox__img{
   width: 100%;
-  height: min(58vh, 520px);
-  display: block;
-  object-fit: cover;
+  flex: 1 1 auto;
+  min-height: 0;
+  height: auto;
+  object-fit: contain;
   background: #000;
 }
 
 .lightbox__meta{
   padding: 16px;
+  flex: 0 0 auto;
+  max-height: 34svh;
+  overflow: auto;
 }
 
 .lightbox__top{
@@ -66,6 +75,7 @@
 
 .lightbox__close{
   position: absolute;
+  z-index: 2;
   top: 14px;
   right: 14px;
   width: 44px;
@@ -77,6 +87,77 @@
   font-size: 28px;
   cursor: pointer;
 }
+
+.lightbox__variants{
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-top: 12px;
+}
+
+.lightbox__variantBtn{
+  appearance: none;
+  border: 1px solid rgba(255,255,255,0.10);
+  background: rgba(255,255,255,0.04);
+  color: rgba(244,244,246,0.9);
+  border-radius: 999px;
+  padding: 8px 12px;
+  font-weight: 850;
+  font-size: 12px;
+  letter-spacing: 0.01em;
+  cursor: pointer;
+  transition: transform 160ms ease, background 160ms ease, border-color 160ms ease;
+}
+
+.lightbox__variantBtn:hover{
+  transform: translateY(-1px);
+  border-color: rgba(255,255,255,0.18);
+  background: rgba(255,255,255,0.07);
+}
+
+.lightbox__variantBtn.is-active{
+  background: rgba(246,196,0,0.92);
+  border-color: rgba(246,196,0,0.55);
+  color: #0b0b0f;
+}
+
+.lightbox__variantBtn:focus-visible{
+  outline: none;
+  box-shadow: 0 0 0 3px rgba(246,196,0,0.35);
+}
+
+.lightbox__nav{
+  position: absolute;
+  top: 50%;
+  transform: translateY(-50%);
+  width: 44px;
+  height: 44px;
+  border-radius: 999px;
+  border: 1px solid rgba(255,255,255,0.16);
+  background: rgba(0,0,0,0.35);
+  color: #fff;
+  font-size: 28px;
+  line-height: 1;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  z-index: 3;
+  transition: transform 160ms ease, background 160ms ease, border-color 160ms ease;
+}
+
+.lightbox__nav:hover{
+  transform: translateY(-50%) scale(1.04);
+  background: rgba(255,255,255,0.08);
+  border-color: rgba(255,255,255,0.22);
+}
+
+.lightbox__nav--prev{ left: 12px; }
+.lightbox__nav--next{ right: 12px; }
+
+@media (max-width: 520px){
+  .lightbox__nav{ display: none; } /* na mobilu stačí swipe/scroll, šipky moc překážej */
+}
+
 
 body.is-locked{ overflow: hidden; }
 

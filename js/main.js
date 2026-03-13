@@ -26,101 +26,213 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   }
 
-  // =========================
-  // Lightbox (open ONLY by clicking photo)
-  // =========================
-  const lb = document.getElementById("lightbox");
-  if (lb) {
-    const lbImg = lb.querySelector(".lightbox__img");
-    const lbTitle = document.getElementById("lightboxTitle");
-    const lbPrice = document.getElementById("lightboxPrice");
-    const lbDesc = document.getElementById("lightboxDesc");
-    const lbClose = lb.querySelector(".lightbox__close");
+// =========================
+// Lightbox, varianty uvnitř lightboxu + šipky předchozí, další
+// =========================
+const lb = document.getElementById("lightbox");
+if (lb) {
+  const lbImg = lb.querySelector(".lightbox__img");
+  const lbTitle = document.getElementById("lightboxTitle");
+  const lbPrice = document.getElementById("lightboxPrice");
+  const lbDesc = document.getElementById("lightboxDesc");
+  const lbClose = lb.querySelector(".lightbox__close");
+  const lbVariants = document.getElementById("lightboxVariants");
+  const btnPrev = lb.querySelector(".lightbox__nav--prev");
+  const btnNext = lb.querySelector(".lightbox__nav--next");
 
-    let lastFocus = null;
+  let lastFocus = null;
 
-    const getLang = () => localStorage.getItem("lang") || "cs";
-    const getPriceForLang = (prices, lang) => {
-      if (!prices) return "";
-      if (lang === "cs") return prices.cs || "";
-      // EN + DE -> EUR
-      if (lang === "de") return prices.de || prices.en || "";
-      return prices.en || prices.de || "";
-    };
+  // seznam všech menu karet pro šipky
+  const cards = Array.from(document.querySelectorAll(".menu-card[data-lightbox]"));
+  let currentIndex = -1;
+  let currentCard = null;
 
-    const openLightboxFromCard = (card) => {
-      const full = card.dataset.full || "";
-      const title = card.dataset.title || "";
-      const desc = card.dataset.desc || "";
+  const getLang = () => localStorage.getItem("lang") || "cs";
 
-      // Cena: vezmi z aktuálně vybrané varianty v kartě
-      let price = "";
-      try {
-        const variants = JSON.parse(card.dataset.variants || "[]");
-        const selected = card.dataset.selected || card.dataset.default || "";
-        const lang = getLang();
-        const v = variants.find((x) => String(x.id) === String(selected)) || variants[0];
-        price = v ? getPriceForLang(v.prices, lang) : "";
-      } catch {
-        price = "";
-      }
+  const priceForLang = (prices, lang) => {
+    if (!prices) return "";
+    if (lang === "cs") return prices.cs || "";
+    if (lang === "de") return prices.de || prices.en || "";
+    return prices.en || prices.de || "";
+  };
 
-      lastFocus = document.activeElement;
+  const labelForLang = (labels, lang) => {
+    if (!labels) return "";
+    if (lang === "cs") return labels.cs || "";
+    if (lang === "de") return labels.de || labels.en || "";
+    return labels.en || labels.de || "";
+  };
 
-      lbImg.src = full;
-      lbImg.alt = title ? `Fotka: ${title}` : "Fotka";
-      lbTitle.textContent = title;
-      lbPrice.textContent = price;
-      lbDesc.textContent = desc;
+  const parseVariants = (card) => {
+    try { return JSON.parse(card.dataset.variants || "[]"); }
+    catch { return []; }
+  };
 
-      lb.classList.add("is-open");
-      lb.setAttribute("aria-hidden", "false");
-      document.body.classList.add("is-locked");
+  const findVariant = (variants, id) =>
+    variants.find(v => String(v.id) === String(id)) || variants[0] || null;
 
-      lbClose.focus();
-    };
+  const renderVariantsInLightbox = (card) => {
+    if (!lbVariants) return;
+    const variants = parseVariants(card);
 
-    const closeLightbox = () => {
-      lb.classList.remove("is-open");
-      lb.setAttribute("aria-hidden", "true");
-      document.body.classList.remove("is-locked");
+    // když nejsou varianty, vyprázdni a hotovo
+    if (!variants.length) {
+      lbVariants.innerHTML = "";
+      return;
+    }
 
-      lbImg.src = "";
-      lbImg.alt = "";
-      lbTitle.textContent = "";
-      lbPrice.textContent = "";
-      lbDesc.textContent = "";
+    const lang = getLang();
+    const selected = card.dataset.selected || card.dataset.default || variants[0].id;
+    card.dataset.selected = selected;
 
-      if (lastFocus && lastFocus.focus) lastFocus.focus();
-      lastFocus = null;
-    };
+    // když je jen 1 varianta, klidně to skryjeme
+    if (variants.length <= 1) {
+      lbVariants.innerHTML = "";
+      return;
+    }
 
-    // Klik: jen na fotku (data-open-lightbox), najdi parent card a otevři z něj
-    document.addEventListener("click", (e) => {
-      const media = e.target.closest("[data-open-lightbox]");
-      if (!media) return;
+    lbVariants.innerHTML = variants.map(v => {
+      const active = String(v.id) === String(selected);
+      return `
+        <button
+          class="lightbox__variantBtn ${active ? "is-active" : ""}"
+          type="button"
+          data-variant="${String(v.id)}"
+          aria-pressed="${active ? "true" : "false"}"
+        >${labelForLang(v.labels, lang)}</button>
+      `;
+    }).join("");
 
-      const card = media.closest(".menu-card");
-      if (!card) return;
+    // click na variant v lightboxu
+    lbVariants.querySelectorAll(".lightbox__variantBtn").forEach(btn => {
+      btn.addEventListener("click", (e) => {
+        e.preventDefault();
+        e.stopPropagation();
 
-      openLightboxFromCard(card);
+        const id = btn.dataset.variant;
+        if (!id) return;
+
+        card.dataset.selected = id;
+
+        // update active state
+        lbVariants.querySelectorAll(".lightbox__variantBtn").forEach(b => {
+          const on = b === btn;
+          b.classList.toggle("is-active", on);
+          b.setAttribute("aria-pressed", on ? "true" : "false");
+        });
+
+        // přepni cenu a případně fotku (pokud varianta nese img/full)
+        applyVariantToLightbox(card);
+      });
     });
+  };
 
-    // ESC zavírá
-    document.addEventListener("keydown", (e) => {
-      if (!lb.classList.contains("is-open")) return;
-      if (e.key === "Escape") closeLightbox();
-    });
+  const applyVariantToLightbox = (card) => {
+    const variants = parseVariants(card);
+    const selected = card.dataset.selected || card.dataset.default || "";
+    const v = findVariant(variants, selected);
 
-    lbClose.addEventListener("click", closeLightbox);
-    lb.addEventListener("click", (e) => {
-      if (e.target === lb) closeLightbox();
-    });
+    const lang = getLang();
+    const price = v ? priceForLang(v.prices, lang) : "";
 
-    // Expose helper, aby menu-variants.js mohl po změně varianty refreshnout cenu v lightboxu,
-    // pokud je lightbox otevřený na té samé kartě.
-    window.__openLightboxFromCard = openLightboxFromCard;
-  }
+    // full image pro lightbox, preferuj variant.full, jinak card.dataset.full
+    const full = (v && v.full) ? v.full : (card.dataset.full || "");
+    const title = card.dataset.title || "";
+    const desc = card.dataset.desc || "";
+
+    if (full) lbImg.src = full;
+    lbImg.alt = title ? `Fotka: ${title}` : "Fotka";
+    lbTitle.textContent = title;
+    lbPrice.textContent = price;
+    lbDesc.textContent = desc;
+  };
+
+  const openLightboxFromCard = (card) => {
+    currentCard = card;
+    currentIndex = cards.indexOf(card);
+
+    lastFocus = document.activeElement;
+
+    // naplň title, desc, full, price podle vybrané varianty
+    applyVariantToLightbox(card);
+
+    // vykresli tlačítka variant do lightboxu
+    renderVariantsInLightbox(card);
+
+    lb.classList.add("is-open");
+    lb.setAttribute("aria-hidden", "false");
+    document.body.classList.add("is-locked");
+
+    lbClose.focus();
+  };
+
+  const closeLightbox = () => {
+    lb.classList.remove("is-open");
+    lb.setAttribute("aria-hidden", "true");
+    document.body.classList.remove("is-locked");
+
+    lbImg.src = "";
+    lbImg.alt = "";
+    lbTitle.textContent = "";
+    lbPrice.textContent = "";
+    lbDesc.textContent = "";
+    if (lbVariants) lbVariants.innerHTML = "";
+
+    currentCard = null;
+    currentIndex = -1;
+
+    if (lastFocus && lastFocus.focus) lastFocus.focus();
+    lastFocus = null;
+  };
+
+  const goTo = (dir) => {
+    if (!cards.length) return;
+    if (currentIndex < 0) return;
+
+    let next = currentIndex + dir;
+    if (next < 0) next = cards.length - 1;
+    if (next >= cards.length) next = 0;
+
+    openLightboxFromCard(cards[next]);
+  };
+
+  // Klik jen na fotku, najdi parent card
+  document.addEventListener("click", (e) => {
+    const media = e.target.closest("[data-open-lightbox]");
+    if (!media) return;
+
+    const card = media.closest(".menu-card");
+    if (!card) return;
+
+    openLightboxFromCard(card);
+  });
+
+  // Šipky v UI
+  if (btnPrev) btnPrev.addEventListener("click", (e) => { e.preventDefault(); e.stopPropagation(); goTo(-1); });
+  if (btnNext) btnNext.addEventListener("click", (e) => { e.preventDefault(); e.stopPropagation(); goTo(1); });
+
+  // ESC, šipky na klávesnici
+  document.addEventListener("keydown", (e) => {
+    if (!lb.classList.contains("is-open")) return;
+
+    if (e.key === "Escape") closeLightbox();
+    if (e.key === "ArrowLeft") goTo(-1);
+    if (e.key === "ArrowRight") goTo(1);
+  });
+
+  lbClose.addEventListener("click", closeLightbox);
+  lb.addEventListener("click", (e) => {
+    if (e.target === lb) closeLightbox();
+  });
+
+  // Když změníš jazyk, přepočítej jen cenu a texty pro aktuální otevřenou kartu
+  window.addEventListener("langchange", () => {
+    if (!lb.classList.contains("is-open")) return;
+    if (!currentCard) return;
+    applyVariantToLightbox(currentCard);
+    renderVariantsInLightbox(currentCard);
+  });
+}
 
   // Highlight today opening hours
   const hoursRoot = document.querySelector("[data-hours]");
