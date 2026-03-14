@@ -135,6 +135,7 @@
         madeby: "Vytvořil Marek Oláh",
         addressPlaceholder: "Česká Kubice, Horní Folmava",
         allergensDownload: "Stáhnout seznam alergenů",
+        backToTop: "Zpět na začátek",
       },
     },
 
@@ -252,6 +253,7 @@
         madeby: "Built by Marek Oláh",
         addressPlaceholder: "Česká Kubice, Horní Folmava",
         allergensDownload: "Download allergen list",
+        backToTop: "Back to top",
       },
     },
 
@@ -369,6 +371,7 @@
         madeby: "Erstellt von Marek Oláh",
         addressPlaceholder: "Česká Kubice, Horní Folmava",
         allergensDownload: "Download allergen list",
+        backToTop: "Zurück nach oben",
       },
     },
   };
