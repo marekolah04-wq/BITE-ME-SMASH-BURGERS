@@ -155,7 +155,14 @@
 .lightbox__nav--next{ right: 12px; }
 
 @media (max-width: 520px){
-  .lightbox__nav{ display: none; } /* na mobilu stačí swipe/scroll, šipky moc překážej */
+  .lightbox__nav{
+    width: 38px;
+    height: 38px;
+    font-size: 24px;
+    opacity: .9;
+  }
+  .lightbox__nav--prev{ left: 8px; }
+  .lightbox__nav--next{ right: 8px; }
 }
 
 

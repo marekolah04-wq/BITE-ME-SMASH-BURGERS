@@ -1,0 +1,11 @@
+{
+  "name": "BITE ME Smash Burgers",
+  "short_name": "BITE ME",
+  "icons": [
+    { "src": "/assets/icons/android-chrome-192x192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "/assets/icons/android-chrome-512x512.png", "sizes": "512x512", "type": "image/png" }
+  ],
+  "theme_color": "#0b0b0f",
+  "background_color": "#0b0b0f",
+  "display": "standalone"
+}

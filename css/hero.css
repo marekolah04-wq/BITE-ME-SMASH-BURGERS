@@ -121,6 +121,7 @@
   letter-spacing: 0.02em;
   transition: transform 180ms ease, box-shadow 180ms ease, background 180ms ease, border-color 180ms ease;
   outline: none;
+  cursor: pointer;
 }
 
 .btn:hover{
