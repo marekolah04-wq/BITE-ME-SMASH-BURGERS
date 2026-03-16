@@ -74,6 +74,11 @@
           side1: "150g Česnekové hranolky, 65 Kč",
           side2: "Coleslaw, 49 Kč",
         },
+        order: {
+          text: "Objednej po telefonu",
+          call: "Zavolej nám",
+          tail: "a vyzvedni u okýnka.",
+        }
       },
 
       visit: {
@@ -193,6 +198,11 @@
           side1: "150g garlic fries, €2.80",
           side2: "Coleslaw, €2.10",
         },
+        order: {
+          text: "Order by phone",
+          call: "Call us",
+          tail: "and pick up at the window.",
+        }
       },
 
       visit: {
@@ -311,6 +321,11 @@
           sides: "Beilagen / Extras",
           side1: "150g Knoblauch-Pommes, €2,80",
           side2: "Coleslaw, €2,10",
+        },
+        order: {
+          text: "Bestell telefonisch",
+          call: "Ruf uns an",
+          tail: "und hol es am Fenster ab.",
         },
       },
 
