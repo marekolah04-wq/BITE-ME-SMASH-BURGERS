@@ -29,6 +29,7 @@
         nav: "Navigovat",
         call: "Zavolat",
         ig: "Instagram",
+        opening: "Otevíráme již brzy.",
       },
 
       menu: {
@@ -153,6 +154,7 @@
         nav: "Navigate",
         call: "Call",
         ig: "Instagram",
+        opening: "Opening soon.",
       },
 
       menu: {
@@ -277,6 +279,7 @@
         nav: "Navigation",
         call: "Anrufen",
         ig: "Instagram",
+        opening: "Eröffnung in Kürze.",
       },
 
       menu: {

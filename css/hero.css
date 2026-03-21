@@ -139,3 +139,16 @@
   border-color: rgba(255,204,0,0.55);
 }
 .btn--primary:hover{ background: rgba(255,204,0,1); }
+
+
+/* opening soon badge*/
+.hero__badge{
+  width: fit-content;
+  margin: 10px auto 10px;
+  padding: 7px 12px;
+  border-radius: 999px;
+  color: rgba(244,244,246,0.92);
+  font-weight: 850;
+  letter-spacing: 0.02em;
+  font-size: 15px;
+}
