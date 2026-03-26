@@ -109,12 +109,11 @@
         sun: "Ne",
         closed: "Zavřeno",
 
-        tueTime: "11:00 - 19:00",
-        wedTime: "11:00 - 19:00",
-        thuTime: "11:00 - 19:00",
-        friTime: "11:00 - 19:00",
-        satTime: "11:00 - 19:00",
-        sunTime: "11:00 - 19:00",
+        wedTime: "11:00 - 18:00",
+        thuTime: "11:00 - 18:00",
+        friTime: "11:00 - 18:00",
+        satTime: "11:00 - 18:00",
+        sunTime: "11:00 - 18:00",
       },
 
       faq: {
@@ -234,12 +233,11 @@
         sun: "Sun",
         closed: "Closed",
 
-        tueTime: "11:00 – 19:00",
-        wedTime: "11:00 – 19:00",
-        thuTime: "11:00 – 19:00",
-        friTime: "11:00 – 19:00",
-        satTime: "11:00 – 19:00",
-        sunTime: "11:00 – 19:00",
+        wedTime: "11:00 – 18:00",
+        thuTime: "11:00 – 18:00",
+        friTime: "11:00 – 18:00",
+        satTime: "11:00 – 18:00",
+        sunTime: "11:00 – 18:00",
       },
 
       faq: {
@@ -359,12 +357,11 @@
         sun: "So",
         closed: "Geschlossen",
 
-        tueTime: "11:00 – 19:00",
-        wedTime: "11:00 – 19:00",
-        thuTime: "11:00 – 19:00",
-        friTime: "11:00 – 19:00",
-        satTime: "11:00 – 19:00",
-        sunTime: "11:00 – 19:00",
+        wedTime: "11:00 – 18:00",
+        thuTime: "11:00 – 18:00",
+        friTime: "11:00 – 18:00",
+        satTime: "11:00 – 18:00",
+        sunTime: "11:00 – 18:00",
       },
 
       faq: {
