@@ -39,7 +39,7 @@
         items: {
           classic: {
             title: "Classic Smash",
-            desc: "Šťavnatý hovězí Angus, Cheddar, Dresing dle výběru, Karamelizovaná cibulka, Opečená slanina, Nakládaná okurka",
+            desc: "Šťavnatý hovězí Angus, Cheddar, Uzená mayo, Karamelizovaná cibulka, Opečená slanina, Nakládaná okurka",
           },
           spicy: {
             title: "Spicy Smash🌶️",
@@ -163,7 +163,7 @@
         items: {
           classic: {
             title: "Classic Smash",
-            desc: "Juicy Angus beef, cheddar, dip of your choice, caramelized onions, crispy bacon, pickles",
+            desc: "Juicy Angus beef, cheddar, smoked mayo, caramelized onions, crispy bacon, pickles",
           },
           spicy: {
             title: "Spicy Smash🌶️",
