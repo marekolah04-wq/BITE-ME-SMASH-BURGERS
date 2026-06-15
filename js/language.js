@@ -24,13 +24,19 @@
       nav: { menu: "Menu", visit: "Navštívit", faq: "FAQ" },
 
       hero: {
-        title: "STREET SMASH BURGERS",
-        text: "Smash burgery, co tě trefí hned napoprvý.",
+        title: "BITE ME se brzy vrátí",
+        text: "Momentálně připravujeme nové místo. Sleduj Instagram, kde oznámíme datum znovuotevření.",
         nav: "Navigovat",
         call: "Zavolat",
         ig: "Instagram",
         opening: "Otevíráme již brzy.",
       },
+
+      status: {
+  eyebrow: "Aktuální info",
+  title: "Dočasně zavřeno",
+  lead: "BITE ME je momentálně dočasně uzavřeno kvůli přesunu na nové místo. Brzy se vrátíme zpět.",
+},
 
       menu: {
         title: "Menu",
@@ -107,13 +113,13 @@
         fri: "Pá",
         sat: "So",
         sun: "Ne",
-        closed: "Zavřeno",
+        closed: "Dočasně zavřeno",
 
-        wedTime: "11:00 - 18:00",
-        thuTime: "11:00 - 18:00",
-        friTime: "11:00 - 18:00",
-        satTime: "11:00 - 18:00",
-        sunTime: "11:00 - 18:00",
+        wedTime: "Dočasně zavřeno",
+        thuTime: "Dočasně zavřeno",
+        friTime: "Dočasně zavřeno",
+        satTime: "Dočasně zavřeno",
+        sunTime: "Dočasně zavřeno",
       },
 
       faq: {
@@ -135,7 +141,7 @@
         contact: "Kontakt",
         address: "Adresa",
         hours: "Otevíračka",
-        hoursSummary: "Po-Út Zavřeno,  St–Ne 11:00–18:00",
+        hoursSummary: "Momentálně dočasně zavřeno.",
         copySuffix: "BITE ME. Všechna práva vyhrazena.",
         madeby: "Vytvořil Marek Oláh",
         photoVideo: "Foto & Video: @baudys.me",
@@ -149,12 +155,19 @@
       nav: { menu: "Menu", visit: "Visit", faq: "FAQ" },
 
       hero: {
-        title: "STREET SMASH BURGERS",
+        title: "BITE ME is coming back soon",
+        text: "We're currently preparing a new location. Follow Instagram where we'll announce our reopening date.",
         nav: "Navigate",
         call: "Call",
         ig: "Instagram",
         opening: "Opening soon.",
       },
+
+      status: {
+  eyebrow: "Current update",
+  title: "Temporarily closed",
+  lead: "BITE ME is temporarily closed while preparing a new location. We'll be back soon.",
+},
 
       menu: {
         title: "Menu",
@@ -231,13 +244,13 @@
         fri: "Fri",
         sat: "Sat",
         sun: "Sun",
-        closed: "Closed",
+        closed: "Temporarily closed.",
 
-        wedTime: "11:00 – 18:00",
-        thuTime: "11:00 – 18:00",
-        friTime: "11:00 – 18:00",
-        satTime: "11:00 – 18:00",
-        sunTime: "11:00 – 18:00",
+        wedTime: "Temporarily closed.",
+        thuTime: "Temporarily closed.",
+        friTime: "Temporarily closed.",
+        satTime: "Temporarily closed.",
+        sunTime: "Temporarily closed.",
       },
 
       faq: {
@@ -259,7 +272,7 @@
         contact: "Contact",
         address: "Address",
         hours: "Opening hours",
-        hoursSummary: "Mon-Tue Closed, Wed-Sun 11:00-18:00",
+        hoursSummary: "Temporarily closed.",
         copySuffix: "BITE ME. All rights reserved.",
         madeby: "Built by Marek Oláh",
         photoVideo: "Photos & Video: @baudys.me",
@@ -273,12 +286,19 @@
       nav: { menu: "Menü", visit: "Besuchen", faq: "FAQ" },
 
       hero: {
-        title: "STREET SMASH BURGERS",
+        title: "BITE ME kommt bald zurück",
+        text: "Wir bereiten derzeit einen neuen Standort vor. Folge uns auf Instagram, dort geben wir den Eröffnungstermin bekannt.",
         nav: "Navigation",
         call: "Anrufen",
         ig: "Instagram",
         opening: "Eröffnung in Kürze.",
       },
+
+      status: {
+  eyebrow: "Aktuelle Information",
+  title: "Vorübergehend geschlossen",
+  lead: "BITE ME ist derzeit wegen eines Umzugs an einen neuen Standort vorübergehend geschlossen. Wir sind bald zurück.",
+},
 
       menu: {
         title: "Menü",
@@ -355,13 +375,13 @@
         fri: "Fr",
         sat: "Sa",
         sun: "So",
-        closed: "Geschlossen",
+        closed: "Vorübergehend geschlossen",
 
-        wedTime: "11:00 – 18:00",
-        thuTime: "11:00 – 18:00",
-        friTime: "11:00 – 18:00",
-        satTime: "11:00 – 18:00",
-        sunTime: "11:00 – 18:00",
+        wedTime: "Vorübergehend geschlossen",
+        thuTime: "Vorübergehend geschlossen",
+        friTime: "Vorübergehend geschlossen",
+        satTime: "Vorübergehend geschlossen",
+        sunTime: "Vorübergehend geschlossen",
       },
 
       faq: {
@@ -383,7 +403,7 @@
         contact: "Kontakt",
         address: "Adresse",
         hours: "Öffnungszeiten",
-        hoursSummary: "Mo-Di Geschlossen, Mi-So 11:00-18:00",
+        hoursSummary: "Vorübergehend geschlossen.",
         copySuffix: "BITE ME. Alle Rechte vorbehalten.",
         madeby: "Erstellt von Marek Oláh",
         photoVideo: "Fotos & Video: @baudys.me",

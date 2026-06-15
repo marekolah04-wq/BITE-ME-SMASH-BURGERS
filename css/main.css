@@ -116,3 +116,91 @@ body.is-loaded .hero__logo{
   display: grid;
   gap: 10px;
 }
+
+
+
+
+/* status sectiom */
+
+#status {
+  padding-top: clamp(56px, 7vw, 96px);
+  padding-bottom: clamp(48px, 6vw, 80px);
+}
+
+#status .panel {
+  position: relative;
+  overflow: hidden;
+  border: 1px solid rgba(255, 205, 41, 0.22);
+  box-shadow: 0 24px 80px rgba(0, 0, 0, 0.38);
+}
+
+#status .panel::before {
+  content: "🍔";
+  position: absolute;
+  right: clamp(22px, 5vw, 70px);
+  top: 50%;
+  transform: translateY(-50%);
+  font-size: clamp(72px, 10vw, 150px);
+  opacity: 0.58;
+  pointer-events: none;
+}
+
+#status .section__head {
+  max-width: 680px;
+}
+
+#status .section__eyebrow {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  width: fit-content;
+  margin-bottom: 14px;
+  padding: 7px 12px;
+  border: 1px solid rgba(255, 205, 41, 0.28);
+  border-radius: 999px;
+  color: #ffcd29;
+  font-size: 0.82rem;
+  font-weight: 800;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+
+#status .section__eyebrow::before {
+  content: "!";
+  font-size: 1.2rem;
+  line-height: 1;
+}
+
+#status .section__title {
+  margin-bottom: 14px;
+  font-size: clamp(2rem, 4vw, 3.6rem);
+  line-height: 1;
+}
+
+#status .section__lead {
+  max-width: 620px;
+  color: rgba(255, 255, 255, 0.76);
+  font-size: clamp(1rem, 1.4vw, 1.15rem);
+  line-height: 1.75;
+}
+
+
+@media (max-width: 700px) {
+  #status {
+    padding-top: 42px;
+    padding-bottom: 52px;
+  }
+
+  #status .panel {
+    padding: 28px 22px;
+  }
+}
+
+@media (max-width: 700px) {
+  #status .panel::before {
+    opacity: 0.35;
+    right: 8px;
+    bottom: -80px;
+    font-size: 80px;
+  }
+}

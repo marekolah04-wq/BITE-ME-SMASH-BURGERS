@@ -4,7 +4,7 @@
     let lastY = window.scrollY;
     let ticking = false;
 
-    const showAt = 320;     // kdy to vůbec dává smysl ukázat
+    const showAt = 320;     
     const delta = 6;        // citlivost směru scrollu
 
     const updateFab = () => {
